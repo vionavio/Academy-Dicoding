@@ -1,4 +1,4 @@
-package com.viona.academy.adapter
+package com.viona.academy.ui.bookmark
 
 import android.content.Intent
 import android.view.LayoutInflater
@@ -9,10 +9,10 @@ import com.bumptech.glide.request.RequestOptions
 import com.viona.academy.R
 import com.viona.academy.data.CourseEntity
 import com.viona.academy.databinding.ItemsAcademyBinding
-import com.viona.academy.ui.bookmark.BookmarkFragmentCallback
 import com.viona.academy.ui.detail.DetailCourseActivity
 
-class BookmarkAdapter(private val callback: BookmarkFragmentCallback) : RecyclerView.Adapter<BookmarkAdapter.CourseViewHolder>() {
+class BookmarkAdapter(private val callback: BookmarkFragmentCallback) :
+    RecyclerView.Adapter<BookmarkAdapter.CourseViewHolder>() {
     private var listCourses = ArrayList<CourseEntity>()
 
     fun setCourses(courses: List<CourseEntity>?) {
@@ -39,7 +39,8 @@ class BookmarkAdapter(private val callback: BookmarkFragmentCallback) : Recycler
         fun bind(course: CourseEntity) {
             with(binding) {
                 tvItemTitle.text = course.title
-                tvItemDate.text = itemView.resources.getString(R.string.deadline_date, course.deadline)
+                tvItemDate.text =
+                    itemView.resources.getString(R.string.deadline_date, course.deadline)
                 itemView.setOnClickListener {
                     val intent = Intent(itemView.context, DetailCourseActivity::class.java)
                     intent.putExtra(DetailCourseActivity.EXTRA_COURSE, course.courseId)

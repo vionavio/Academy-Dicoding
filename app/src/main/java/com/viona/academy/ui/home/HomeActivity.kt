@@ -2,7 +2,6 @@ package com.viona.academy.ui.home
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.viona.academy.adapter.SectionsPagerAdapter
 import com.viona.academy.databinding.ActivityHomeBinding
 
 class HomeActivity : AppCompatActivity() {

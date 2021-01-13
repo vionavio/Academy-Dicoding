@@ -1,4 +1,4 @@
-package com.viona.academy.adapter
+package com.viona.academy.ui.detail
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

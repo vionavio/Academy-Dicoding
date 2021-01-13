@@ -6,12 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.viona.academy.data.ModuleEntity
 import com.viona.academy.databinding.FragmentModuleListBinding
 import com.viona.academy.ui.reader.CourseReaderActivity
 import com.viona.academy.ui.reader.CourseReaderCallback
+import com.viona.academy.ui.reader.CourseReaderViewModel
 import com.viona.academy.utils.DataDummy
 
 class ModuleListFragment : Fragment(), MyAdapterClickListener {
@@ -22,6 +24,7 @@ class ModuleListFragment : Fragment(), MyAdapterClickListener {
         fun newInstance(): ModuleListFragment = ModuleListFragment()
     }
 
+    private lateinit var viewModel: CourseReaderViewModel
     private lateinit var fragmentModuleListBinding: FragmentModuleListBinding
     private lateinit var adapter: ModuleListAdapter
     private lateinit var courseReaderCallback: CourseReaderCallback
@@ -48,6 +51,7 @@ class ModuleListFragment : Fragment(), MyAdapterClickListener {
 
     override fun onItemClicked(position: Int, moduleId: String) {
         courseReaderCallback.moveTo(position, moduleId)
+        viewModel.setSelectedModule(moduleId)
     }
 
     private fun populateRecyclerView(modules: List<ModuleEntity>) {
@@ -61,5 +65,16 @@ class ModuleListFragment : Fragment(), MyAdapterClickListener {
                 DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL)
             rvModule.addItemDecoration(dividerItemDecoration)
         }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        viewModel = ViewModelProvider(
+            requireActivity(),
+            ViewModelProvider.NewInstanceFactory()
+        )[CourseReaderViewModel::class.java]
+        adapter = ModuleListAdapter(this)
+        populateRecyclerView(viewModel.getModules())
     }
 }

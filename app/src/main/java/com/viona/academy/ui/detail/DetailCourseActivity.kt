@@ -3,13 +3,13 @@ package com.viona.academy.ui.detail
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.viona.academy.R
-import com.viona.academy.adapter.DetailCourseAdapter
 import com.viona.academy.data.CourseEntity
 import com.viona.academy.databinding.ActivityDetailCourseBinding
 import com.viona.academy.databinding.ContentDetailCourseBinding
@@ -36,17 +36,20 @@ class DetailCourseActivity : AppCompatActivity() {
 
         val adapter = DetailCourseAdapter()
 
+        val viewModel = ViewModelProvider(
+            this,
+            ViewModelProvider.NewInstanceFactory()
+        )[DetailCourseViewModel::class.java]
+
         val extras = intent.extras
         if (extras != null) {
             val courseId = extras.getString(EXTRA_COURSE)
             if (courseId != null) {
-                val modules = DataDummy.generateDummyModules(courseId)
+
+                viewModel.setSelectedCourse(courseId)
+                val modules = viewModel.getModules()
                 adapter.setModule(modules)
-                for (course in DataDummy.generaeteDummyCourse()) {
-                    if (course.courseId == courseId) {
-                        populateCourse(course)
-                    }
-                }
+                populateCourse(viewModel.getCourse())
             }
         }
         with(detailContentBinding.rvModule) {

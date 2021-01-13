@@ -5,7 +5,7 @@ import com.viona.academy.data.ModuleEntity
 
 object DataDummy {
 
-    fun generaeteDummyCourse(): List<CourseEntity> {
+    fun generaeteDummyCourse(): ArrayList<CourseEntity> {
 
         val courses = ArrayList<CourseEntity>()
 
@@ -63,7 +63,7 @@ object DataDummy {
         return courses
     }
 
-    fun generateDummyModules(courseId: String): List<ModuleEntity> {
+    fun generateDummyModules(courseId: String): ArrayList<ModuleEntity> {
 
         val modules = ArrayList<ModuleEntity>()
 
