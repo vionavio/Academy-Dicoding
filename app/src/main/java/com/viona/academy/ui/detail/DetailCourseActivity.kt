@@ -14,7 +14,6 @@ import com.viona.academy.data.CourseEntity
 import com.viona.academy.databinding.ActivityDetailCourseBinding
 import com.viona.academy.databinding.ContentDetailCourseBinding
 import com.viona.academy.ui.reader.CourseReaderActivity
-import com.viona.academy.utils.DataDummy
 
 class DetailCourseActivity : AppCompatActivity() {
 
