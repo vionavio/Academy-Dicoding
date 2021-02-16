@@ -22,10 +22,19 @@ class CourseReaderViewModel : ViewModel() {
     fun getSelectedModule(): ModuleEntity {
         lateinit var module: ModuleEntity
 
+
         val moduleEntities = getModules()
+
         for (moduleEntity in moduleEntities) {
             if (moduleEntity.moduleId == moduleId) {
-                module = moduleEntity
+                module = ModuleEntity(
+                    moduleEntity.moduleId,
+                    moduleEntity.courseId,
+                    moduleEntity.title,
+                    moduleEntity.position,
+                    moduleEntity.read
+                )
+
                 module.contentEntity =
                     ContentEntity(
                         "<h3 class=\\\"fr-text-bordered\\\">" +

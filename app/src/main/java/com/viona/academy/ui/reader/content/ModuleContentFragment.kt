@@ -32,13 +32,20 @@ class ModuleContentFragment : Fragment() {
     override fun onActivityCreated( savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         if (activity != null) {
-            val viewModel = ViewModelProvider(requireActivity(), ViewModelProvider.NewInstanceFactory())[CourseReaderViewModel::class.java]
-            val module = viewModel.getSelectedModule()
-            populateWebView(module)
+            val viewModel = ViewModelProvider(
+                requireActivity(),
+                ViewModelProvider.NewInstanceFactory()
+            )[CourseReaderViewModel::class.java]
+
+            populateWebView(viewModel.getSelectedModule())
         }
     }
 
     private fun populateWebView(content: ModuleEntity) {
-        fragmentModuleContentBinding.webView.loadData(content.contentEntity?.content ?: "", "text/html", "UTF-8")
+        fragmentModuleContentBinding.webView.loadData(
+            content.contentEntity?.content ?: "",
+            "text/html",
+            "UTF-8"
+        )
     }
 }
