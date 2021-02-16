@@ -14,7 +14,7 @@ import com.viona.academy.databinding.FragmentModuleListBinding
 import com.viona.academy.ui.reader.CourseReaderActivity
 import com.viona.academy.ui.reader.CourseReaderCallback
 import com.viona.academy.ui.reader.CourseReaderViewModel
-import com.viona.academy.utils.DataDummy
+import com.viona.academy.viewmodel.ViewModelFactory
 
 class ModuleListFragment : Fragment(), MyAdapterClickListener {
 
@@ -32,7 +32,7 @@ class ModuleListFragment : Fragment(), MyAdapterClickListener {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         fragmentModuleListBinding = FragmentModuleListBinding.inflate(inflater, container, false)
         return fragmentModuleListBinding.root
@@ -40,8 +40,11 @@ class ModuleListFragment : Fragment(), MyAdapterClickListener {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        val factory = ViewModelFactory.getInstance(requireActivity())
+        viewModel = ViewModelProvider(requireActivity(), factory)[CourseReaderViewModel::class.java]
+
         adapter = ModuleListAdapter(this)
-        populateRecyclerView(DataDummy.generateDummyModules("a14"))
+        populateRecyclerView(viewModel.getModules())
     }
 
     override fun onAttach(context: Context) {
@@ -65,16 +68,5 @@ class ModuleListFragment : Fragment(), MyAdapterClickListener {
                 DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL)
             rvModule.addItemDecoration(dividerItemDecoration)
         }
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        viewModel = ViewModelProvider(
-            requireActivity(),
-            ViewModelProvider.NewInstanceFactory()
-        )[CourseReaderViewModel::class.java]
-        adapter = ModuleListAdapter(this)
-        populateRecyclerView(viewModel.getModules())
     }
 }

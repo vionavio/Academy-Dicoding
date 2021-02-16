@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.viona.academy.data.ModuleEntity
 import com.viona.academy.databinding.FragmentModuleContentBinding
 import com.viona.academy.ui.reader.CourseReaderViewModel
+import com.viona.academy.viewmodel.ViewModelFactory
 
 class ModuleContentFragment : Fragment() {
 
@@ -22,20 +23,19 @@ class ModuleContentFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
+    ): View {
         fragmentModuleContentBinding =
             FragmentModuleContentBinding.inflate(inflater, container, false)
         return fragmentModuleContentBinding.root
     }
 
-    override fun onActivityCreated( savedInstanceState: Bundle?) {
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         if (activity != null) {
-            val viewModel = ViewModelProvider(
-                requireActivity(),
-                ViewModelProvider.NewInstanceFactory()
-            )[CourseReaderViewModel::class.java]
+
+            val factory = ViewModelFactory.getInstance(requireActivity())
+            val viewModel =
+                ViewModelProvider(requireActivity(), factory)[CourseReaderViewModel::class.java]
 
             populateWebView(viewModel.getSelectedModule())
         }

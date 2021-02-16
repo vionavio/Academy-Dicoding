@@ -14,6 +14,7 @@ import com.viona.academy.data.CourseEntity
 import com.viona.academy.databinding.ActivityDetailCourseBinding
 import com.viona.academy.databinding.ContentDetailCourseBinding
 import com.viona.academy.ui.reader.CourseReaderActivity
+import com.viona.academy.viewmodel.ViewModelFactory
 
 class DetailCourseActivity : AppCompatActivity() {
 
@@ -35,10 +36,9 @@ class DetailCourseActivity : AppCompatActivity() {
 
         val adapter = DetailCourseAdapter()
 
-        val viewModel = ViewModelProvider(
-            this,
-            ViewModelProvider.NewInstanceFactory()
-        )[DetailCourseViewModel::class.java]
+        val factory = ViewModelFactory.getInstance(this)
+        val viewModel = ViewModelProvider(this, factory)[DetailCourseViewModel::class.java]
+
 
         val extras = intent.extras
         if (extras != null) {

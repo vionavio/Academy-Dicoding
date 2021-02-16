@@ -1,18 +1,17 @@
 package com.viona.academy.ui.bookmark
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.app.ShareCompat
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.viona.academy.R
 import com.viona.academy.data.CourseEntity
-import com.viona.academy.databinding.FragmentAcademyBinding
 import com.viona.academy.databinding.FragmentBookmarkBinding
-import com.viona.academy.utils.DataDummy
+import com.viona.academy.viewmodel.ViewModelFactory
 
 class BookmarkFragment : Fragment(), BookmarkFragmentCallback {
 
@@ -21,7 +20,7 @@ class BookmarkFragment : Fragment(), BookmarkFragmentCallback {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         fragmentAcademyBinding = FragmentBookmarkBinding.inflate(layoutInflater, container, false)
         return fragmentAcademyBinding.root
     }
@@ -30,7 +29,9 @@ class BookmarkFragment : Fragment(), BookmarkFragmentCallback {
         super.onViewCreated(view, savedInstanceState)
 
         if (activity != null) {
-            val viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[BookmarkViewModel::class.java]
+            val factory = ViewModelFactory.getInstance(requireActivity())
+            val viewModel = ViewModelProvider(this, factory)[BookmarkViewModel::class.java]
+
             val courses = viewModel.getBookmarks()
             val bookmarkAdapter = BookmarkAdapter(this)
             bookmarkAdapter.setCourses(courses)
