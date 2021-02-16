@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "289888172323",
+    "project_id": "academy-7fb61",
+    "storage_bucket": "academy-7fb61.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:289888172323:android:73b0df5917d0babe23f496",
+        "android_client_info": {
+          "package_name": "com.viona.academy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "289888172323-7ieidk5ushnja035ua4p6rn6j26rv5h7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBgVdTO8slGuo58UsJw-6qvh9MukOtaRio"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "289888172323-7ieidk5ushnja035ua4p6rn6j26rv5h7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
