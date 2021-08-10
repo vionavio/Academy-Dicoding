@@ -38,12 +38,6 @@ class ModuleListFragment : Fragment(), MyAdapterClickListener {
         return fragmentModuleListBinding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        adapter = ModuleListAdapter(this)
-        populateRecyclerView(DataDummy.generateDummyModules("a14"))
-    }
-
     override fun onAttach(context: Context) {
         super.onAttach(context)
         courseReaderCallback = context as CourseReaderActivity

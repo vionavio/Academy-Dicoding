@@ -8,7 +8,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.viona.academy.R
 import com.viona.academy.data.source.local.entity.CourseEntity
-import com.viona.academy.databinding.ItemsAcademyBinding
+import com.viona.academy.databinding.ItemsBookmarkBinding
 import com.viona.academy.ui.detail.DetailCourseActivity
 
 class BookmarkAdapter(private val callback: BookmarkFragmentCallback) :
@@ -22,9 +22,9 @@ class BookmarkAdapter(private val callback: BookmarkFragmentCallback) :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CourseViewHolder {
-        val itemsAcademyBinding =
-            ItemsAcademyBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return CourseViewHolder(itemsAcademyBinding)
+        val itemsBookmarkBinding =
+            ItemsBookmarkBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return CourseViewHolder(itemsBookmarkBinding)
     }
 
     override fun onBindViewHolder(holder: CourseViewHolder, position: Int) {
@@ -34,7 +34,7 @@ class BookmarkAdapter(private val callback: BookmarkFragmentCallback) :
 
     override fun getItemCount(): Int = listCourses.size
 
-    class CourseViewHolder(private val binding: ItemsAcademyBinding) :
+    inner class CourseViewHolder(private val binding: ItemsBookmarkBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(course: CourseEntity) {
             with(binding) {
@@ -46,6 +46,10 @@ class BookmarkAdapter(private val callback: BookmarkFragmentCallback) :
                     intent.putExtra(DetailCourseActivity.EXTRA_COURSE, course.courseId)
                     itemView.context.startActivity(intent)
                 }
+                imgShare.setOnClickListener {
+                    callback.onShareClick(course)
+                }
+
                 Glide.with(itemView.context)
                     .load(course.imagePath)
                     .apply(RequestOptions.placeholderOf(R.drawable.ic_loading))
