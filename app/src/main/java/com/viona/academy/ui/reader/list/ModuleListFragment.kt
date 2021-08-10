@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.viona.academy.data.ModuleEntity
+import com.viona.academy.data.source.local.entity.ModuleEntity
 import com.viona.academy.databinding.FragmentModuleListBinding
 import com.viona.academy.ui.reader.CourseReaderActivity
 import com.viona.academy.ui.reader.CourseReaderCallback

@@ -1,4 +1,4 @@
-package com.viona.academy.data
+package com.viona.academy.data.source.local.entity
 
 data class CourseEntity(
     var courseId: String,

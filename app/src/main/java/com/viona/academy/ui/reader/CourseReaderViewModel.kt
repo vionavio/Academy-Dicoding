@@ -1,8 +1,8 @@
 package com.viona.academy.ui.reader
 
 import androidx.lifecycle.ViewModel
-import com.viona.academy.data.ContentEntity
-import com.viona.academy.data.ModuleEntity
+import com.viona.academy.data.source.local.entity.ContentEntity
+import com.viona.academy.data.source.local.entity.ModuleEntity
 import com.viona.academy.utils.DataDummy
 
 class CourseReaderViewModel : ViewModel() {

@@ -9,10 +9,8 @@ import androidx.core.app.ShareCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.viona.academy.R
-import com.viona.academy.data.CourseEntity
-import com.viona.academy.databinding.FragmentAcademyBinding
+import com.viona.academy.data.source.local.entity.CourseEntity
 import com.viona.academy.databinding.FragmentBookmarkBinding
-import com.viona.academy.utils.DataDummy
 
 class BookmarkFragment : Fragment(), BookmarkFragmentCallback {
 

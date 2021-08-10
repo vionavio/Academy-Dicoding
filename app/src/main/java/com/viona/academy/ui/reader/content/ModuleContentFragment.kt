@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.viona.academy.data.ModuleEntity
+import com.viona.academy.data.source.local.entity.ModuleEntity
 import com.viona.academy.databinding.FragmentModuleContentBinding
 import com.viona.academy.ui.reader.CourseReaderViewModel
 

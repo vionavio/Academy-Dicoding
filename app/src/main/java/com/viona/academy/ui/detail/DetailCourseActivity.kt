@@ -10,7 +10,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.viona.academy.R
-import com.viona.academy.data.CourseEntity
+import com.viona.academy.data.source.local.entity.CourseEntity
 import com.viona.academy.databinding.ActivityDetailCourseBinding
 import com.viona.academy.databinding.ContentDetailCourseBinding
 import com.viona.academy.ui.reader.CourseReaderActivity

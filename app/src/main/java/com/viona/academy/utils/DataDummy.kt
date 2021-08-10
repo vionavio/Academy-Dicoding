@@ -1,7 +1,7 @@
 package com.viona.academy.utils
 
-import com.viona.academy.data.CourseEntity
-import com.viona.academy.data.ModuleEntity
+import com.viona.academy.data.source.local.entity.CourseEntity
+import com.viona.academy.data.source.local.entity.ModuleEntity
 
 object DataDummy {
 

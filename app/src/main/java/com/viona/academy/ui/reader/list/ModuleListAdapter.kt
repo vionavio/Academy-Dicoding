@@ -3,7 +3,7 @@ package com.viona.academy.ui.reader.list
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.viona.academy.data.ModuleEntity
+import com.viona.academy.data.source.local.entity.ModuleEntity
 import com.viona.academy.databinding.ItemsModuleListCustomBinding
 
 class ModuleListAdapter internal constructor(private val listener: MyAdapterClickListener) :

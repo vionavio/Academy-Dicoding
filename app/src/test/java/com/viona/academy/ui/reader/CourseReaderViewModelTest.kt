@@ -1,6 +1,6 @@
 package com.viona.academy.ui.reader
 
-import com.viona.academy.data.ContentEntity
+import com.viona.academy.data.source.local.entity.ContentEntity
 import com.viona.academy.utils.DataDummy
 import org.junit.Test
 

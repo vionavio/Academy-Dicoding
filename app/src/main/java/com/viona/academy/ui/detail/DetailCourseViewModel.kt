@@ -1,8 +1,8 @@
 package com.viona.academy.ui.detail
 
 import androidx.lifecycle.ViewModel
-import com.viona.academy.data.CourseEntity
-import com.viona.academy.data.ModuleEntity
+import com.viona.academy.data.source.local.entity.CourseEntity
+import com.viona.academy.data.source.local.entity.ModuleEntity
 import com.viona.academy.utils.DataDummy
 
 class DetailCourseViewModel : ViewModel() {

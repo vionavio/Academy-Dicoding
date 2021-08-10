@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.viona.academy.R
-import com.viona.academy.data.CourseEntity
+import com.viona.academy.data.source.local.entity.CourseEntity
 import com.viona.academy.databinding.ItemsAcademyBinding
 import com.viona.academy.ui.detail.DetailCourseActivity
 
