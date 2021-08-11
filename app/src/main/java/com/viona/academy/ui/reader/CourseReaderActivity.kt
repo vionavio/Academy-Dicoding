@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.viona.academy.R
 import com.viona.academy.ui.reader.content.ModuleContentFragment
 import com.viona.academy.ui.reader.list.ModuleListFragment
+import com.viona.academy.viewModel.ViewModelFactory
 
 class CourseReaderActivity : AppCompatActivity(), CourseReaderCallback {
 
@@ -17,7 +18,8 @@ class CourseReaderActivity : AppCompatActivity(), CourseReaderCallback {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_course_reader)
 
-        val viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[CourseReaderViewModel::class.java]
+        val factory = ViewModelFactory.getInstance(this)
+        val viewModel = ViewModelProvider(this, factory)[CourseReaderViewModel::class.java]
 
         val bundle = intent.extras
         if (bundle != null) {

@@ -15,6 +15,7 @@ import com.viona.academy.ui.reader.CourseReaderActivity
 import com.viona.academy.ui.reader.CourseReaderCallback
 import com.viona.academy.ui.reader.CourseReaderViewModel
 import com.viona.academy.utils.DataDummy
+import com.viona.academy.viewModel.ViewModelFactory
 
 class ModuleListFragment : Fragment(), MyAdapterClickListener {
 
@@ -70,9 +71,10 @@ class ModuleListFragment : Fragment(), MyAdapterClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val factory = ViewModelFactory.getInstance(requireActivity())
         viewModel = ViewModelProvider(
             requireActivity(),
-            ViewModelProvider.NewInstanceFactory()
+            factory
         )[CourseReaderViewModel::class.java]
         adapter = ModuleListAdapter(this)
         populateRecyclerView(viewModel.getModules())

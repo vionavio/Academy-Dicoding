@@ -13,6 +13,7 @@ import com.viona.academy.data.CourseEntity
 import com.viona.academy.databinding.FragmentAcademyBinding
 import com.viona.academy.databinding.FragmentBookmarkBinding
 import com.viona.academy.utils.DataDummy
+import com.viona.academy.viewModel.ViewModelFactory
 
 class BookmarkFragment : Fragment(), BookmarkFragmentCallback {
 
@@ -30,7 +31,10 @@ class BookmarkFragment : Fragment(), BookmarkFragmentCallback {
         super.onViewCreated(view, savedInstanceState)
 
         if (activity != null) {
-            val viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[BookmarkViewModel::class.java]
+
+            val factory = ViewModelFactory.getInstance(requireActivity())
+
+            val viewModel = ViewModelProvider(this, factory)[BookmarkViewModel::class.java]
             val courses = viewModel.getBookmarks()
             val bookmarkAdapter = BookmarkAdapter(this)
             bookmarkAdapter.setCourses(courses)

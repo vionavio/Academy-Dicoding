@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.viona.academy.databinding.FragmentAcademyBinding
+import com.viona.academy.viewModel.ViewModelFactory
 
 class AcademyFragment : Fragment() {
 
@@ -25,9 +26,12 @@ class AcademyFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         if (activity != null) {
+
+            val factory = ViewModelFactory.getInstance(requireActivity())
+
             val viewModel = ViewModelProvider(
-                requireActivity(),
-                ViewModelProvider.NewInstanceFactory()
+               this,
+                factory
             )[AcademyViewModel::class.java]
             val courses = viewModel.getCourses()
 
